@@ -86,5 +86,20 @@ public class ContactController {
             e.printStackTrace();
             return "error";
         }
+
+
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseBody
+    public String deleteContacts(@PathVariable int id) {
+        System.out.println("=== DELETE /contacts/" + id + " called ===");
+        try {
+            contactDAO.deleteContact(id);
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
     }
 }
