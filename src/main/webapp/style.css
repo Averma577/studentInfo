@@ -1,0 +1,484 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 30px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+h1 i {
+    color: #667eea;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5a6fd8;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-warning {
+    background: #ffc107;
+    color: #333;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #667eea;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+tr:hover {
+    background: #f5f5f5;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close:hover {
+    color: #333;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+/* Contact List */
+.contact-item {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.contact-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.contact-item-actions {
+    display: flex;
+    gap: 5px;
+}
+
+/* File Preview */
+.file-preview {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-preview:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+    max-width: 500px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification.success {
+    background: #28a745;
+}
+
+.notification.error {
+    background: #dc3545;
+}
+
+.notification.warning {
+    background: #ffc107;
+    color: #333;
+}
+
+.notification button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.notification.warning button {
+    color: #333;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.profile-image-container {
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 50%; /* Makes it a circle */
+    border: 3px solid #667eea;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-image-container:hover {
+    border-color: #5a6fd8;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 50%; /* Ensures image is also circular */
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+}
+
+.default-profile {
+    font-size: 30px;
+    color: #6c757d;
+}
+
+/* Center align the profile photo cell */
+table td:nth-child(5) {
+    text-align: center;
+    padding: 15px 8px !important;
+    vertical-align: middle;
+}
+
+/* File Preview */
+.file-preview {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-preview:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+/* Style for file links */
+.file-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #495057;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s;
+}
+
+.file-link:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+    color: #667eea;
+    text-decoration: none;
+}
+
+/* Contacts button */
+.contacts-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #ffc107;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.contacts-btn:hover {
+    background: #e0a800;
+    transform: translateY(-2px);
+}
+
+/* Action buttons container */
+.action-cell {
+    min-width: 100px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    /* Make profile images smaller on mobile */
+    .profile-image-container {
+        width: 50px;
+        height: 50px;
+    }
+
+    .default-profile {
+        font-size: 20px;
+    }
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+    max-width: 500px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification.success {
+    background: #28a745;
+}
+
+.notification.error {
+    background: #dc3545;
+}
+
+.notification.warning {
+    background: #ffc107;
+    color: #333;
+}
+
+.notification button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.notification.warning button {
+    color: #333;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Add hover effect to table rows */
+.table-hover tr:hover {
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+/* Animation for new profile images */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.profile-image-container {
+    animation: fadeIn 0.5s ease;
+}
